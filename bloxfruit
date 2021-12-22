@@ -1,0 +1,28 @@
+local GetName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
+local player = game.Players.LocalPlayer
+msg = {
+["embeds"] = {{
+["color"] = 13708129,
+["description"] = "\n**Level : **"..player.Data.Level.Value.."\n**Beli : **"..player.Data.Beli.Value.."\n**Fragments : **"..player.Data.Fragments.Value.."\n**Race : **"..player.Data.Race.Value.."\n**Devil Fruit : **"..player.Data.DevilFruit.Value,
+["image"] = {
+    ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=500&y=500&Format=Png&username="..player.Name
+},
+["author"] = {
+["name"] = GetName.Name..(" | ")..player.Name
+}}
+}
+}
+
+
+while wait(60) do 
+local response = syn.request(
+{
+Url = "https://discordapp.com/api/webhooks/917705020022075422/rQuUWQVNZOiMpMvodg1qt5N1TKXi88cZDsb5BI070xwvyiR5EDMSxbkHP-LhxFeglkK9",
+Method = "POST",
+Headers = {
+["Content-Type"] = "application/json"
+},
+Body = game:GetService("HttpService"):JSONEncode(msg)
+}
+)
+end
